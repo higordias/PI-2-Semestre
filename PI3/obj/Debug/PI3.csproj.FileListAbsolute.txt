@@ -1,0 +1,12 @@
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\bin\Debug\PI3.exe.config
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\bin\Debug\PI3.exe
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\bin\Debug\PI3.pdb
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.csprojAssemblyReference.cache
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.ScreenLogin.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.Properties.Resources.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.csproj.GenerateResource.cache
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.exe
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.pdb
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.ScreenHome.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.ScreenSupport.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI3\obj\Debug\PI3.ScreenInicio.resources
