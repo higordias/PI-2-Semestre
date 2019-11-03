@@ -67,8 +67,10 @@ namespace PI3
                 if (btn.Name != "btnInicio")
                 {
                     btn.BackColor = Color.MidnightBlue;
+                    btn.Enabled = true;
                 }
                 btnInicio.BackColor = Color.Goldenrod;
+                btnInicio.Enabled = false;
             }
             OpenFormInPanel<ScreenInicio>();
         }
@@ -90,8 +92,25 @@ namespace PI3
                 if (btn.Name != "btnSuporte")
                 {
                     btn.BackColor = Color.MidnightBlue;
+                    btn.Enabled = true;
                 }
                 btnSuporte.BackColor = Color.Goldenrod;
+                btnSuporte.Enabled = false;
+            }
+        }
+
+        private void btnInformacoes_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel<ScreenInformation>();
+            foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
+            {
+                if (btn.Name != "btnInformacoes")
+                {
+                    btn.BackColor = Color.MidnightBlue;
+                    btn.Enabled = true;
+                }
+                btnInformacoes.BackColor = Color.Goldenrod;
+                btnInformacoes.Enabled = false;
             }
         }
     }
