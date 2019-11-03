@@ -51,7 +51,7 @@
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(800, 39);
+            this.panelHeader.Size = new System.Drawing.Size(893, 39);
             this.panelHeader.TabIndex = 0;
             this.panelHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelHeader_MouseMove);
             // 
@@ -80,7 +80,7 @@
             this.panelSideMenu.Location = new System.Drawing.Point(0, 39);
             this.panelSideMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(267, 411);
+            this.panelSideMenu.Size = new System.Drawing.Size(267, 504);
             this.panelSideMenu.TabIndex = 1;
             // 
             // btnCartoesRFID
@@ -151,6 +151,7 @@
             this.btnSuporte.Size = new System.Drawing.Size(267, 44);
             this.btnSuporte.TabIndex = 2;
             this.btnSuporte.UseVisualStyleBackColor = true;
+            this.btnSuporte.Click += new System.EventHandler(this.btnSuporte_Click);
             // 
             // btnRelatorios
             // 
@@ -171,6 +172,7 @@
             // 
             // btnInicio
             // 
+            this.btnInicio.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnInicio.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnInicio.FlatAppearance.BorderSize = 0;
             this.btnInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
@@ -184,7 +186,7 @@
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(267, 44);
             this.btnInicio.TabIndex = 0;
-            this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // panelContent
@@ -193,14 +195,14 @@
             this.panelContent.Location = new System.Drawing.Point(267, 39);
             this.panelContent.Margin = new System.Windows.Forms.Padding(4);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(533, 411);
+            this.panelContent.Size = new System.Drawing.Size(626, 504);
             this.panelContent.TabIndex = 2;
             // 
             // ScreenHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(893, 543);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelSideMenu);
             this.Controls.Add(this.panelHeader);

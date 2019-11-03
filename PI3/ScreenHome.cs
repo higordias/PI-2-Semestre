@@ -62,12 +62,37 @@ namespace PI3
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
+            foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
+            {
+                if (btn.Name != "btnInicio")
+                {
+                    btn.BackColor = Color.MidnightBlue;
+                }
+                btnInicio.BackColor = Color.Goldenrod;
+            }
             OpenFormInPanel<ScreenInicio>();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tem Certeza que deseja sair?");
+            DialogResult dialogSairResult = MessageBox.Show("Tem Certeza que deseja sair?", "Deseja Sair?", MessageBoxButtons.YesNo);
+            if (dialogSairResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnSuporte_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel<ScreenSupport>();
+            foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
+            {
+                if (btn.Name != "btnSuporte")
+                {
+                    btn.BackColor = Color.MidnightBlue;
+                }
+                btnSuporte.BackColor = Color.Goldenrod;
+            }
         }
     }
 }
