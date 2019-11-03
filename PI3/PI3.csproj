@@ -52,6 +52,12 @@
     <Compile Include="ScreenHome.Designer.cs">
       <DependentUpon>ScreenHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScreenInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScreenInformation.Designer.cs">
+      <DependentUpon>ScreenInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScreenInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </Compile>
     <EmbeddedResource Include="ScreenHome.resx">
       <DependentUpon>ScreenHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScreenInformation.resx">
+      <DependentUpon>ScreenInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScreenInicio.resx">
       <DependentUpon>ScreenInicio.cs</DependentUpon>
