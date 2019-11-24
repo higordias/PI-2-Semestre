@@ -82,6 +82,12 @@
     <Compile Include="ScreenSupport.Designer.cs">
       <DependentUpon>ScreenSupport.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScreenSupportLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScreenSupportLogin.Designer.cs">
+      <DependentUpon>ScreenSupportLogin.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ScreenHome.resx">
       <DependentUpon>ScreenHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +111,9 @@
     </Compile>
     <EmbeddedResource Include="ScreenSupport.resx">
       <DependentUpon>ScreenSupport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScreenSupportLogin.resx">
+      <DependentUpon>ScreenSupportLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

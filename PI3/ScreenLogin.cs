@@ -133,7 +133,8 @@ namespace PI3
 
         private void lblCliqueAqui_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var screenSupport = new ScreenSupport();
+            this.Hide();
+            var screenSupport = new ScreenSupportLogin();
             screenSupport.Show();
         }
     }
