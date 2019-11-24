@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlServerCe;
 
 namespace PI3
 {
@@ -15,6 +16,7 @@ namespace PI3
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+        string dir_projeto = System.AppContext.BaseDirectory; //variable that holds the database path
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -24,6 +26,25 @@ namespace PI3
         public ScreenHome()
         {
             InitializeComponent();
+        }
+
+        /**
+         * stringConexao connects to the database
+         **/
+        public string stringConexao()
+        {
+            string connectionString = "";
+            try
+            {
+                string nomeArquivo = @dir_projeto + "\\DB_SmartHomeAutomation.sdf";
+                string senha = "";
+                connectionString = string.Format("DataSource=\"{0}\"; Password='HomeAutomationDB'", nomeArquivo, senha);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return connectionString;
         }
 
         private void OpenFormInPanel<Forms>() where Forms : Form, new()
@@ -112,6 +133,7 @@ namespace PI3
                 btnInformacoes.BackColor = Color.Goldenrod;
                 btnInformacoes.Enabled = false;
             }
+
         }
     }
 }
