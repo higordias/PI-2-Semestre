@@ -166,5 +166,17 @@ namespace PI3.Properties {
                 this["estado"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string privilegio {
+            get {
+                return ((string)(this["privilegio"]));
+            }
+            set {
+                this["privilegio"] = value;
+            }
+        }
     }
 }

@@ -112,6 +112,7 @@ namespace PI3
                         Properties.Settings.Default.endereco = getInfo("Endereco", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cidade = getInfo("Cidade", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.estado = getInfo("Estado", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.privilegio = getInfo("Privilegio", tabela:"TabelaLogin", "Nome", Properties.Settings.Default.nomeUsuario, cn);
 
                         this.Hide();
                         var screenHome = new ScreenHome(); 
@@ -136,6 +137,13 @@ namespace PI3
             this.Hide();
             var screenSupport = new ScreenSupportLogin();
             screenSupport.Show();
+        }
+
+        private void lblEsqueciSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            var screenForgotPassword = new ScreenForgotPassword();
+            screenForgotPassword.Show();
         }
     }
 }
