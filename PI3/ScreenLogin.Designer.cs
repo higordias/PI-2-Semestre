@@ -40,6 +40,7 @@
             this.btnEntrar = new System.Windows.Forms.Button();
             this.lblCliqueAqui = new System.Windows.Forms.LinkLabel();
             this.lblEsqueciSenha = new System.Windows.Forms.LinkLabel();
+            this.lblEsqueciLogin = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // panel1
@@ -146,7 +147,7 @@
             this.lblEsqueciSenha.ActiveLinkColor = System.Drawing.Color.Indigo;
             this.lblEsqueciSenha.AutoSize = true;
             this.lblEsqueciSenha.LinkColor = System.Drawing.Color.Blue;
-            this.lblEsqueciSenha.Location = new System.Drawing.Point(71, 265);
+            this.lblEsqueciSenha.Location = new System.Drawing.Point(71, 254);
             this.lblEsqueciSenha.Name = "lblEsqueciSenha";
             this.lblEsqueciSenha.Size = new System.Drawing.Size(143, 17);
             this.lblEsqueciSenha.TabIndex = 13;
@@ -154,11 +155,25 @@
             this.lblEsqueciSenha.Text = "Esqueci minha senha";
             this.lblEsqueciSenha.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEsqueciSenha_LinkClicked);
             // 
+            // lblEsqueciLogin
+            // 
+            this.lblEsqueciLogin.ActiveLinkColor = System.Drawing.Color.Indigo;
+            this.lblEsqueciLogin.AutoSize = true;
+            this.lblEsqueciLogin.LinkColor = System.Drawing.Color.Blue;
+            this.lblEsqueciLogin.Location = new System.Drawing.Point(81, 271);
+            this.lblEsqueciLogin.Name = "lblEsqueciLogin";
+            this.lblEsqueciLogin.Size = new System.Drawing.Size(123, 17);
+            this.lblEsqueciLogin.TabIndex = 14;
+            this.lblEsqueciLogin.TabStop = true;
+            this.lblEsqueciLogin.Text = "Esqueci meu login";
+            this.lblEsqueciLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEsqueciLogin_LinkClicked);
+            // 
             // ScreenLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 417);
+            this.Controls.Add(this.lblEsqueciLogin);
             this.Controls.Add(this.lblEsqueciSenha);
             this.Controls.Add(this.lblCliqueAqui);
             this.Controls.Add(this.btnEntrar);
@@ -192,6 +207,7 @@
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.LinkLabel lblCliqueAqui;
         private System.Windows.Forms.LinkLabel lblEsqueciSenha;
+        private System.Windows.Forms.LinkLabel lblEsqueciLogin;
     }
 }
 

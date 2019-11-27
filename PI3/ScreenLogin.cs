@@ -67,6 +67,14 @@ namespace PI3
             return info;
         }
 
+        public int countEntries(string tabela, string coluna, string campo, SqlCeConnection cn)
+        {
+            string check = "SELECT COUNT(*) from " + tabela + " WHERE " + coluna + "='" + campo + "'";
+            SqlCeCommand command = new SqlCeCommand(check, cn);
+            int count = (int)command.ExecuteScalar();
+            return count;
+        }
+
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             SqlCeConnection cn = new SqlCeConnection(stringConexao());
@@ -89,9 +97,10 @@ namespace PI3
             }
             else
             {
+                int loginExiste = countEntries("TabelaLogin", "Login", tbLogin.Text, cn);
                 string senhaHex;
                 senhaHex = getInfo("Senha", "TabelaLogin", "Login", tbLogin.Text, cn);
-                if (senhaHex != "")
+                if ((senhaHex != "") && (loginExiste > 0))
                 {
                     string senha = "";
                     for (int i = 0; i < senhaHex.Length / 2; i++)
@@ -124,6 +133,11 @@ namespace PI3
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                else if (loginExiste <= 0)
+                {
+                    MessageBox.Show("Usuario inexistente!", "Usuario Invalidos",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -144,6 +158,13 @@ namespace PI3
             this.Hide();
             var screenForgotPassword = new ScreenForgotPassword();
             screenForgotPassword.Show();
+        }
+
+        private void lblEsqueciLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            var screenForgotLogin = new ScreenForgotLogin();
+            screenForgotLogin.Show();
         }
     }
 }

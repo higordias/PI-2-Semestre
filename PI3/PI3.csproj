@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScreenForgotLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScreenForgotLogin.Designer.cs">
+      <DependentUpon>ScreenForgotLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScreenForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="ScreenSupportLogin.Designer.cs">
       <DependentUpon>ScreenSupportLogin.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ScreenForgotLogin.resx">
+      <DependentUpon>ScreenForgotLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScreenForgotPassword.resx">
       <DependentUpon>ScreenForgotPassword.cs</DependentUpon>
     </EmbeddedResource>

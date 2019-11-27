@@ -69,3 +69,6 @@ C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre-git\PI3\bin\Deb
 C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre-git\PI3\bin\Debug\PT\System.Data.SqlServerCe.resources.dll
 C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre-git\PI3\obj\Debug\PI3.csproj.CopyComplete
 C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre-git\PI3\obj\Debug\PI3.ScreenForgotPassword.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\obj\Debug\PI3.ScreenForgotLogin.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\obj\Debug\PI3.ScreenForgotPassword.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\obj\Debug\PI3.ScreenSupportLogin.resources
