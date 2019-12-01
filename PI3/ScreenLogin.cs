@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+
 
 namespace PI3
 {
     public partial class ScreenLogin : Form
     {
         string dir_projeto = System.AppContext.BaseDirectory; //variable that holds the database path
+
 
         public ScreenLogin()
         {
@@ -110,6 +114,7 @@ namespace PI3
                     if (tbSenha.Text == senha)
                     {
                         Properties.Settings.Default.nomeUsuario = getInfo("Nome", "TabelaLogin", "Login", tbLogin.Text, cn);
+                        Properties.Settings.Default.codigoCliente = getInfo("CodigoCliente", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.codigoInstalacao = getInfo("ModuloInstalado", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.componente1 = getInfo("Componente1", "TabelaKits", "CodigoKit", Properties.Settings.Default.codigoInstalacao, cn);
                         Properties.Settings.Default.componente2 = getInfo("Componente2", "TabelaKits", "CodigoKit", Properties.Settings.Default.codigoInstalacao, cn);
@@ -121,7 +126,7 @@ namespace PI3
                         Properties.Settings.Default.endereco = getInfo("Endereco", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cidade = getInfo("Cidade", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.estado = getInfo("Estado", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
-                        Properties.Settings.Default.privilegio = getInfo("Privilegio", tabela:"TabelaLogin", "Nome", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.privilegio = getInfo("Privilegio", "TabelaLogin", "Nome", Properties.Settings.Default.nomeUsuario, cn);
 
                         this.Hide();
                         var screenHome = new ScreenHome(); 

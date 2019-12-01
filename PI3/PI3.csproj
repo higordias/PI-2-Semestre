@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="M2Mqtt.Net, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\M2Mqtt.4.3.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -74,11 +77,11 @@
     <Compile Include="ScreenInformation.Designer.cs">
       <DependentUpon>ScreenInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScreenInicio.cs">
+    <Compile Include="ScreenButtons.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScreenInicio.Designer.cs">
-      <DependentUpon>ScreenInicio.cs</DependentUpon>
+    <Compile Include="ScreenButtons.Designer.cs">
+      <DependentUpon>ScreenButtons.cs</DependentUpon>
     </Compile>
     <Compile Include="ScreenLogin.cs">
       <SubType>Form</SubType>
@@ -112,8 +115,8 @@
     <EmbeddedResource Include="ScreenInformation.resx">
       <DependentUpon>ScreenInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScreenInicio.resx">
-      <DependentUpon>ScreenInicio.cs</DependentUpon>
+    <EmbeddedResource Include="ScreenButtons.resx">
+      <DependentUpon>ScreenButtons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScreenLogin.resx">
       <DependentUpon>ScreenLogin.cs</DependentUpon>
@@ -133,6 +136,7 @@
     <EmbeddedResource Include="ScreenSupportLogin.resx">
       <DependentUpon>ScreenSupportLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

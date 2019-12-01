@@ -99,6 +99,7 @@
             this.btnCartoesRFID.Size = new System.Drawing.Size(267, 44);
             this.btnCartoesRFID.TabIndex = 5;
             this.btnCartoesRFID.UseVisualStyleBackColor = true;
+            this.btnCartoesRFID.Click += new System.EventHandler(this.btnCartoesRFID_Click);
             // 
             // btnInformacoes
             // 
@@ -170,6 +171,7 @@
             this.btnRelatorios.Size = new System.Drawing.Size(267, 44);
             this.btnRelatorios.TabIndex = 1;
             this.btnRelatorios.UseVisualStyleBackColor = true;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // btnInicio
             // 
