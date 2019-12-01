@@ -71,7 +71,6 @@ namespace PI3
             }
         }
 
-
         private void PanelHeader_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -93,7 +92,7 @@ namespace PI3
                 btnInicio.BackColor = Color.Goldenrod;
                 btnInicio.Enabled = false;
             }
-            OpenFormInPanel<ScreenInicio>();
+            OpenFormInPanel<ScreenButtons>();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -134,6 +133,14 @@ namespace PI3
                 btnInformacoes.Enabled = false;
             }
 
+        }
+
+        private void btnCartoesRFID_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
         }
     }
 }

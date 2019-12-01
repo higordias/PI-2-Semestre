@@ -178,5 +178,17 @@ namespace PI3.Properties {
                 this["privilegio"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string codigoCliente {
+            get {
+                return ((string)(this["codigoCliente"]));
+            }
+            set {
+                this["codigoCliente"] = value;
+            }
+        }
     }
 }
