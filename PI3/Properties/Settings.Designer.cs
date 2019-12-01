@@ -190,5 +190,125 @@ namespace PI3.Properties {
                 this["codigoCliente"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao1 {
+            get {
+                return ((string)(this["cartao1"]));
+            }
+            set {
+                this["cartao1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao2 {
+            get {
+                return ((string)(this["cartao2"]));
+            }
+            set {
+                this["cartao2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao3 {
+            get {
+                return ((string)(this["cartao3"]));
+            }
+            set {
+                this["cartao3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao4 {
+            get {
+                return ((string)(this["cartao4"]));
+            }
+            set {
+                this["cartao4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao5 {
+            get {
+                return ((string)(this["cartao5"]));
+            }
+            set {
+                this["cartao5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao6 {
+            get {
+                return ((string)(this["cartao6"]));
+            }
+            set {
+                this["cartao6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao7 {
+            get {
+                return ((string)(this["cartao7"]));
+            }
+            set {
+                this["cartao7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao8 {
+            get {
+                return ((string)(this["cartao8"]));
+            }
+            set {
+                this["cartao8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao9 {
+            get {
+                return ((string)(this["cartao9"]));
+            }
+            set {
+                this["cartao9"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cartao10 {
+            get {
+                return ((string)(this["cartao10"]));
+            }
+            set {
+                this["cartao10"] = value;
+            }
+        }
     }
 }
