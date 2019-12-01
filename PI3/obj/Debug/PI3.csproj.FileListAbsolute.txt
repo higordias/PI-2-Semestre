@@ -74,3 +74,4 @@ C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\obj\Debug\P
 C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\bin\Debug\M2Mqtt.Net.dll
 C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\bin\Debug\M2Mqtt.Net.pdb
 C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\obj\Debug\PI3.ScreenButtons.resources
+C:\Users\higor\Desktop\Fatec\PIC\2 semestre\Codigo\PI-2-Semestre\PI3\obj\Debug\PI3.ScreenRFIDTags.resources

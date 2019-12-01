@@ -137,6 +137,17 @@ namespace PI3
 
         private void btnCartoesRFID_Click(object sender, EventArgs e)
         {
+            OpenFormInPanel<ScreenRFIDTags>();
+            foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
+            {
+                if (btn.Name != "btnCartoesRFID")
+                {
+                    btn.BackColor = Color.MidnightBlue;
+                    btn.Enabled = true;
+                }
+                btnCartoesRFID.BackColor = Color.Goldenrod;
+                btnCartoesRFID.Enabled = false;
+            }
         }
 
         private void btnRelatorios_Click(object sender, EventArgs e)

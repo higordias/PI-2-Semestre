@@ -127,6 +127,17 @@ namespace PI3
                         Properties.Settings.Default.cidade = getInfo("Cidade", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.estado = getInfo("Estado", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.privilegio = getInfo("Privilegio", "TabelaLogin", "Nome", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao1 = getInfo("Cartao1", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao2 = getInfo("Cartao2", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao3 = getInfo("Cartao3", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao4 = getInfo("Cartao4", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao5 = getInfo("Cartao5", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao6 = getInfo("Cartao6", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao7 = getInfo("Cartao7", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao8 = getInfo("Cartao8", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao9 = getInfo("Cartao9", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.cartao10 = getInfo("Cartao10", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
+
 
                         this.Hide();
                         var screenHome = new ScreenHome(); 
