@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlServerCe;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Globalization;
 
 namespace PI3
 {
@@ -52,13 +54,11 @@ namespace PI3
             {
                 btnLigarLampada.BackgroundImage = Image.FromFile(dir_projeto + "images\\lampadaOff.png");
                 btnLigarLampada.BackgroundImageLayout = ImageLayout.Center;
-                estadoLampada = true;
             }
             else
             {
                 btnLigarLampada.BackgroundImage = Image.FromFile(dir_projeto + "images\\lampadaOn.png");
                 btnLigarLampada.BackgroundImageLayout = ImageLayout.Center;
-                estadoLampada = false;
             }
         }
 
@@ -92,14 +92,14 @@ namespace PI3
             string lampadaTopic = Properties.Settings.Default.codigoCliente + "/Casa/Light";
             if (!estadoLampada)
             {
-                btnLigarLampada.BackgroundImage = Image.FromFile(dir_projeto + "images\\lampadaOff.png");
+                btnLigarLampada.BackgroundImage = Image.FromFile(dir_projeto + "images\\lampadaOn.png");
                 client.Publish(lampadaTopic, Encoding.UTF8.GetBytes("1"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, false);
                 btnLigarLampada.BackgroundImageLayout = ImageLayout.Center;
                 estadoLampada = true;
             }
             else
             {
-                btnLigarLampada.BackgroundImage = Image.FromFile(dir_projeto + "images\\lampadaOn.png");
+                btnLigarLampada.BackgroundImage = Image.FromFile(dir_projeto + "images\\lampadaOff.png");
                 client.Publish(lampadaTopic, Encoding.UTF8.GetBytes("0"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, false);
                 btnLigarLampada.BackgroundImageLayout = ImageLayout.Center;
                 estadoLampada = false;
@@ -136,11 +136,11 @@ namespace PI3
             {
                 if (ReceivedMessage == "1")
                 {
-                    estadoLampada = false;
+                    estadoLampada = true;
                 }
                 else if (ReceivedMessage == "0")
                 {
-                    estadoLampada = true;
+                    estadoLampada = false;
                 }
                 setButtonLampada();
             }
@@ -179,6 +179,62 @@ namespace PI3
                     janelaAutomatica = false;
                 }
                 setButtonAutoManual();
+            }
+        }
+
+        public string stringConexao()
+        {
+            string connectionString = "";
+            try
+            {
+                string nomeArquivo = @dir_projeto + "\\DB_SmartHomeAutomation.sdf";
+                string senha = "";
+                connectionString = string.Format("DataSource=\"{0}\"; Password='HomeAutomationDB'", nomeArquivo, senha);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return connectionString;
+        }
+
+        private void addEntryAccess(string Data, string Tag, SqlCeConnection cn)
+        {
+            SqlCeCommand cmd;
+            string sqlRFID = "insert into TabelaAcessos "
+                            + "(Data, Tag) "
+                            + "values (@Data, @Tag)";
+            try
+            {
+                cmd = new SqlCeCommand(sqlRFID, cn);
+                cmd.Parameters.AddWithValue("@Data", Data);
+                cmd.Parameters.AddWithValue("@Tag", Tag);
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlCeException sqlexception)
+            {
+                MessageBox.Show(sqlexception.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void addEntries(string Data, string Tag)
+        {
+            SqlCeConnection cn = new SqlCeConnection(stringConexao());
+            if (cn.State == ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            try
+            {
+                addEntryAccess(Data, Tag, cn);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

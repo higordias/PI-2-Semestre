@@ -152,6 +152,24 @@ namespace PI3
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.privilegio == "Adm")
+            {
+                OpenFormInPanel<ScreenReport>();
+                foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
+                {
+                    if (btn.Name != "btnRelatorios")
+                    {
+                        btn.BackColor = Color.MidnightBlue;
+                        btn.Enabled = true;
+                    }
+                    btnRelatorios.BackColor = Color.Goldenrod;
+                    btnRelatorios.Enabled = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Apenas usuários com privilégios de administrador podem acessar esta opção!", "Erro de permissão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

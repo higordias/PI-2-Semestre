@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
+using System.Globalization;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 
@@ -17,7 +18,8 @@ namespace PI3
     public partial class ScreenLogin : Form
     {
         string dir_projeto = System.AppContext.BaseDirectory; //variable that holds the database path
-
+        DateTime localDate = DateTime.Now;
+        DateTime utcDate = DateTime.UtcNow;
 
         public ScreenLogin()
         {
@@ -126,7 +128,7 @@ namespace PI3
                         Properties.Settings.Default.endereco = getInfo("Endereco", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cidade = getInfo("Cidade", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.estado = getInfo("Estado", "TabelaClientes", "Nome", Properties.Settings.Default.nomeUsuario, cn);
-                        Properties.Settings.Default.privilegio = getInfo("Privilegio", "TabelaLogin", "Nome", Properties.Settings.Default.nomeUsuario, cn);
+                        Properties.Settings.Default.privilegio = getInfo("Privilegio", "TabelaLogin", "Login", tbLogin.Text, cn);
                         Properties.Settings.Default.cartao1 = getInfo("Cartao1", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cartao2 = getInfo("Cartao2", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cartao3 = getInfo("Cartao3", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
@@ -137,7 +139,6 @@ namespace PI3
                         Properties.Settings.Default.cartao8 = getInfo("Cartao8", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cartao9 = getInfo("Cartao9", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
                         Properties.Settings.Default.cartao10 = getInfo("Cartao10", "TabelaRFID", "Responsavel", Properties.Settings.Default.nomeUsuario, cn);
-
 
                         this.Hide();
                         var screenHome = new ScreenHome(); 
@@ -181,6 +182,12 @@ namespace PI3
             this.Hide();
             var screenForgotLogin = new ScreenForgotLogin();
             screenForgotLogin.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var culture = new CultureInfo("pt-br");
+            MessageBox.Show(localDate.ToString(culture));
         }
     }
 }
