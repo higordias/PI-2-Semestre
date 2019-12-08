@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
-using System.Globalization;
 
 namespace PI3
 {
     public partial class ScreenButtons : Form
     {
-        bool estadoLampada = false; // false --> lampada apagada, true --> lampada acesa
-        bool janelaAutomatica = false; // false --> janela manual, true --> janela automatica
-        string dir_projeto = System.AppContext.BaseDirectory;
+        bool estadoLampada = false;     // false --> lampada apagada, true --> lampada acesa
+        bool janelaAutomatica = false;  // false --> janela manual, true --> janela automatica
+        string dir_projeto = System.AppContext.BaseDirectory;   // pasta bin/Debug
         MqttClient client;
         readonly string clientId;
 
@@ -48,6 +41,10 @@ namespace PI3
             client.Publish(requestStatusTopic, Encoding.UTF8.GetBytes("1"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, false);
         }
 
+        /*
+         * Function to set the image of the button used to turn the light on/off
+         * if the light is turned off, the image of a off light is shown, otherwise a light on image is shown
+         */
         private void setButtonLampada()
         {
             if (!estadoLampada)
@@ -62,6 +59,11 @@ namespace PI3
             }
         }
 
+        /*
+         * Function to set the image of the button used to turn the window opening/closing
+         * automatic or manual. if windows is not automatic, a manual image will be shown,
+         * otherwise an auto image is shown
+         */
         private void setButtonAutoManual()
         {
             if (!janelaAutomatica)
@@ -78,6 +80,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Fucntion tha subscribes to the topic ClientCode + "/Casa/#"
+         */
         public void mqttSubscribe()
         {
             // whole topic
@@ -86,6 +91,9 @@ namespace PI3
             client.Subscribe(new string[] { Topic }, new byte[] { 0 });
         }
 
+        /*
+         * Button btnLigarLampada action
+         */
         private void BtnLigarLampada_Click(object sender, EventArgs e)
         {
 
@@ -106,6 +114,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Button btnAutoManual action
+         */
         private void btnAutoManual_Click(object sender, EventArgs e)
         {
             string autoManualTopic = Properties.Settings.Default.codigoCliente + "/Casa/autoManual";
@@ -129,6 +140,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Fuction that treats all mqtt received messages
+         */
         void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
@@ -182,6 +196,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Fuction to connect to the DataBase
+         */
         public string stringConexao()
         {
             string connectionString = "";
@@ -198,58 +215,27 @@ namespace PI3
             return connectionString;
         }
 
-        private void addEntryAccess(string Data, string Tag, SqlCeConnection cn)
-        {
-            SqlCeCommand cmd;
-            string sqlRFID = "insert into TabelaAcessos "
-                            + "(Data, Tag) "
-                            + "values (@Data, @Tag)";
-            try
-            {
-                cmd = new SqlCeCommand(sqlRFID, cn);
-                cmd.Parameters.AddWithValue("@Data", Data);
-                cmd.Parameters.AddWithValue("@Tag", Tag);
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlCeException sqlexception)
-            {
-                MessageBox.Show(sqlexception.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void addEntries(string Data, string Tag)
-        {
-            SqlCeConnection cn = new SqlCeConnection(stringConexao());
-            if (cn.State == ConnectionState.Closed)
-            {
-                cn.Open();
-            }
-            try
-            {
-                addEntryAccess(Data, Tag, cn);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        /*
+         * Button btnUnlockDoor action
+         */
         private void btnUnlockDoor_Click(object sender, EventArgs e)
         {
             string unlockDoorTopic = Properties.Settings.Default.codigoCliente + "/Casa/DoorUnlock";
             client.Publish(unlockDoorTopic, Encoding.UTF8.GetBytes("1"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, false);
         }
 
+        /*
+         * Button btnFecharJanela action
+         */
         private void btnFecharJanela_Click(object sender, EventArgs e)
         {
             string closeWindowTopic = Properties.Settings.Default.codigoCliente + "/Casa/closeWindow";
             client.Publish(closeWindowTopic, Encoding.UTF8.GetBytes("1"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, false);
         }
 
+        /*
+         * Button btnAbrirJanela action
+         */
         private void btnAbrirJanela_Click(object sender, EventArgs e)
         {
             string openWindowTopic = Properties.Settings.Default.codigoCliente + "/Casa/openWindow";

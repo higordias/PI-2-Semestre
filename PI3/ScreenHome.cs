@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
 
 namespace PI3
 {
@@ -16,7 +10,6 @@ namespace PI3
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
-        string dir_projeto = System.AppContext.BaseDirectory; //variable that holds the database path
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -28,25 +21,10 @@ namespace PI3
             InitializeComponent();
         }
 
-        /**
-         * stringConexao connects to the database
-         **/
-        public string stringConexao()
-        {
-            string connectionString = "";
-            try
-            {
-                string nomeArquivo = @dir_projeto + "\\DB_SmartHomeAutomation.sdf";
-                string senha = "";
-                connectionString = string.Format("DataSource=\"{0}\"; Password='HomeAutomationDB'", nomeArquivo, senha);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return connectionString;
-        }
-
+        /*
+         * Fuction used to open a form inside a dock in the screenHome
+         * @param Forms form to be opened
+         */
         private void OpenFormInPanel<Forms>() where Forms : Form, new()
         {
             Form formulario;
@@ -66,11 +44,16 @@ namespace PI3
             else
             {
                 if (formulario.WindowState == FormWindowState.Minimized)
+                {
                     formulario.WindowState = FormWindowState.Normal;
+                }
                 formulario.BringToFront();
             }
         }
 
+        /*
+         * Fuction used to move the window by clicking and holding the top dock
+         */
         private void PanelHeader_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -80,6 +63,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Button btnInicio action
+         */
         private void btnInicio_Click(object sender, EventArgs e)
         {
             foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
@@ -95,6 +81,9 @@ namespace PI3
             OpenFormInPanel<ScreenButtons>();
         }
 
+        /*
+         * Button btnSair action
+         */
         private void btnSair_Click(object sender, EventArgs e)
         {
             DialogResult dialogSairResult = MessageBox.Show("Tem Certeza que deseja sair?", "Deseja Sair?", MessageBoxButtons.YesNo);
@@ -104,9 +93,11 @@ namespace PI3
             }
         }
 
+        /*
+        * Button btnSuporte action
+        */
         private void btnSuporte_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel<ScreenSupport>();
             foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
             {
                 if (btn.Name != "btnSuporte")
@@ -117,11 +108,14 @@ namespace PI3
                 btnSuporte.BackColor = Color.Goldenrod;
                 btnSuporte.Enabled = false;
             }
+            OpenFormInPanel<ScreenSupport>();
         }
 
+        /*
+        * Button btnInformacoes action
+        */
         private void btnInformacoes_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel<ScreenInformation>();
             foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
             {
                 if (btn.Name != "btnInformacoes")
@@ -132,12 +126,14 @@ namespace PI3
                 btnInformacoes.BackColor = Color.Goldenrod;
                 btnInformacoes.Enabled = false;
             }
-
+            OpenFormInPanel<ScreenInformation>();
         }
 
+        /*
+        * Button btnCartoesRFID action
+        */
         private void btnCartoesRFID_Click(object sender, EventArgs e)
         {
-            OpenFormInPanel<ScreenRFIDTags>();
             foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
             {
                 if (btn.Name != "btnCartoesRFID")
@@ -148,13 +144,16 @@ namespace PI3
                 btnCartoesRFID.BackColor = Color.Goldenrod;
                 btnCartoesRFID.Enabled = false;
             }
+            OpenFormInPanel<ScreenRFIDTags>();
         }
 
+        /*
+        * Button btnRelatorios action
+        */
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.privilegio == "Adm")
             {
-                OpenFormInPanel<ScreenReport>();
                 foreach (Button btn in panelSideMenu.Controls.OfType<Button>())
                 {
                     if (btn.Name != "btnRelatorios")
@@ -165,6 +164,7 @@ namespace PI3
                     btnRelatorios.BackColor = Color.Goldenrod;
                     btnRelatorios.Enabled = false;
                 }
+                OpenFormInPanel<ScreenReport>();
             }
             else
             {

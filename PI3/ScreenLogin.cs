@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
-using System.Globalization;
-using uPLibrary.Networking.M2Mqtt;
-using uPLibrary.Networking.M2Mqtt.Messages;
 
 
 namespace PI3
@@ -18,17 +9,15 @@ namespace PI3
     public partial class ScreenLogin : Form
     {
         string dir_projeto = System.AppContext.BaseDirectory; //variable that holds the database path
-        DateTime localDate = DateTime.Now;
-        DateTime utcDate = DateTime.UtcNow;
 
         public ScreenLogin()
         {
             InitializeComponent();
         }
 
-        /**
+        /*
          * stringConexao connects to the database
-         **/
+         */
         public string stringConexao()
         {
             string connectionString = "";
@@ -45,6 +34,15 @@ namespace PI3
             return connectionString;
         }
 
+        /*
+         * Get informations from the database
+         * @param dado column where the data is located
+         * @param tabela table where the data is located
+         * @param coluna column where your filter is located
+         * @param campo field where the user will input the filter
+         * @param cn sql connection variable
+         * @return information requested
+         */
         private string getInfo(string dado, string tabela, string coluna, string campo, SqlCeConnection cn)
         {
             string info = "";
@@ -59,6 +57,15 @@ namespace PI3
             return info;
         }
 
+        /*
+         * Get users from the database
+         * @param dado column where the data is located
+         * @param tabela table where the data is located
+         * @param coluna column where your filter is located
+         * @param campo field where the user will input the filter
+         * @param cn sql connection variable
+         * @return all the users for the searched login
+         */
         private string getUsers(string dado, string tabela, string coluna, string campo, SqlCeConnection cn)
         {
             string info = "";
@@ -73,6 +80,13 @@ namespace PI3
             return info;
         }
 
+        /*
+         * Count how many entries a certain data has in the database
+         * @param tabela table where the data is located
+         * @param coluna column where the data is located
+         * @param campo data to be counted
+         * @param cn sql connection variable
+         */
         public int countEntries(string tabela, string coluna, string campo, SqlCeConnection cn)
         {
             string check = "SELECT COUNT(*) from " + tabela + " WHERE " + coluna + "='" + campo + "'";
@@ -81,6 +95,9 @@ namespace PI3
             return count;
         }
 
+        /*
+         * Button btnEntrar action
+         */
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             SqlCeConnection cn = new SqlCeConnection(stringConexao());
@@ -158,11 +175,17 @@ namespace PI3
             }
         }
 
+        /*
+         * Action executed upon screen login loading
+         */
         private void ScreenLogin_Load(object sender, EventArgs e)
         {
             tbSenha.PasswordChar = '*';
         }
 
+        /*
+         * Label lblCliqueAqui action
+         */
         private void lblCliqueAqui_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -170,6 +193,9 @@ namespace PI3
             screenSupport.Show();
         }
 
+        /*
+         * Label lblEsqueciSenha action
+         */
         private void lblEsqueciSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -177,17 +203,14 @@ namespace PI3
             screenForgotPassword.Show();
         }
 
+        /*
+         * Label lblEsqueciLogin action
+         */
         private void lblEsqueciLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             var screenForgotLogin = new ScreenForgotLogin();
             screenForgotLogin.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var culture = new CultureInfo("pt-br");
-            MessageBox.Show(localDate.ToString(culture));
         }
     }
 }

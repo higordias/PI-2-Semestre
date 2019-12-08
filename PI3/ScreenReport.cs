@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using uPLibrary.Networking.M2Mqtt;
@@ -40,6 +35,9 @@ namespace PI3
             mqttSubscribe();
         }
 
+        /*
+         * Fucntion tha subscribes to the topic ClientCode + "/Casa/#"
+         */
         public void mqttSubscribe()
         {
             // whole topic
@@ -48,9 +46,9 @@ namespace PI3
             client.Subscribe(new string[] { Topic }, new byte[] { 0 });
         }
 
-        /**
+        /*
          * stringConexao connects to the database
-         **/
+         */
         public string stringConexao()
         {
             string connectionString = "";
@@ -67,8 +65,16 @@ namespace PI3
             return connectionString;
         }
 
-        private void addEntryAccess(string Data, string Tag, SqlCeConnection cn)
+        /*
+         * Function that add the RFID tag and date of the action
+         */
+        private void addEntries(string Data, string Tag)
         {
+            SqlCeConnection cn = new SqlCeConnection(stringConexao());
+            if (cn.State == ConnectionState.Closed)
+            {
+                cn.Open();
+            }
             SqlCeCommand cmd;
             string sqlRFID = "insert into TabelaAcessos "
                             + "(Data, Tag) "
@@ -90,23 +96,9 @@ namespace PI3
             }
         }
 
-        private void addEntries(string Data, string Tag)
-        {
-            SqlCeConnection cn = new SqlCeConnection(stringConexao());
-            if (cn.State == ConnectionState.Closed)
-            {
-                cn.Open();
-            }
-            try
-            {
-                addEntryAccess(Data, Tag, cn);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        /*
+         * Fuction that treats all mqtt received messages
+         */
         void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
@@ -137,11 +129,11 @@ namespace PI3
             }
         }
 
-        /**
+        /*
          * showDataBase will load the database and show it in a grid
          * @tabela: table's name
          * @grid: grid where the table will be showed
-         **/
+         */
         private void showDataBase(string tabela, DataGridView grid)
         {
             SqlCeConnection cn = new SqlCeConnection(stringConexao());
@@ -176,11 +168,17 @@ namespace PI3
             }
         }
 
+        /*
+         * Action executed upon screen report loading
+         */
         private void ScreenReport_Load(object sender, EventArgs e)
         {
             showDataBase("TabelaAcessos", dgvAcessos);
         }
 
+        /*
+         * Button btnAtualizarTabela action
+         */
         private void btnAtualizarTabela_Click(object sender, EventArgs e)
         {
             showDataBase("TabelaAcessos", dgvAcessos);
