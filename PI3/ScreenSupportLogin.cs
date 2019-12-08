@@ -21,6 +21,9 @@ namespace PI3
             InitializeComponent();
         }
 
+        /*
+         * Fuction used to move the window by clicking and holding the top dock
+         */
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -30,6 +33,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Button btnEnviar action
+         */
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             if ((tbEmail.Text == "") ||
@@ -97,6 +103,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Button btnCancelar action
+         */
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();

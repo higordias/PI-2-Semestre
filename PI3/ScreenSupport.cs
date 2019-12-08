@@ -11,13 +11,19 @@ namespace PI3
             InitializeComponent();
         }
 
+        /*
+         * Action executed upon screen support loading
+         */
         private void ScreenSupport_Load(object sender, EventArgs e)
         {
             tbEmail.Text = Properties.Settings.Default.email;
             tbContato.Text = Properties.Settings.Default.telefone + " / " + Properties.Settings.Default.celular;
-            tbCodigoCliente.Text = Properties.Settings.Default.codigoInstalacao;
+            tbCodigoCliente.Text = Properties.Settings.Default.codigoCliente;
         }
 
+        /*
+         * Button btnEnviar action
+         */
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             if ((tbEmail.Text == "") ||

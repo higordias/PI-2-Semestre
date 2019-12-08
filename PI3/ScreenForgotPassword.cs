@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using System.Runtime.InteropServices;
@@ -30,6 +24,11 @@ namespace PI3
             InitializeComponent();
         }
 
+        /*
+         * Fuction that sends the password to the user
+         * @param email user email
+         * @param senha user password
+         */
         public void enviarSenhaEmail(string email, string senha)
         {
             try
@@ -71,6 +70,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Functions to fill "Pergunta" combobox upon screen loading
+         */
         private void ScreenForgotPassword_Load(object sender, EventArgs e)
         {
             cbPergunta.Items.Clear();
@@ -84,9 +86,9 @@ namespace PI3
             cbPergunta.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        /**
+        /*
          * stringConexao connects to the database
-         **/
+         */
         public string stringConexao()
         {
             string connectionString = "";
@@ -103,6 +105,9 @@ namespace PI3
             return connectionString;
         }
 
+        /*
+         * Button btnCancelar action
+         */
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -110,6 +115,14 @@ namespace PI3
             screenLogin.Show();
         }
 
+        /*
+         * Get informations from the database
+         * @param dado column where the data is located
+         * @param tabela table where the data is located
+         * @param coluna column where your filter is located
+         * @param campo field where the user will input the filter
+         * @param cn sql connection variable
+         */
         private string getInfo(string dado, string tabela, string coluna, string campo, SqlCeConnection cn)
         {
             string info = "";
@@ -124,6 +137,13 @@ namespace PI3
             return info;
         }
 
+        /*
+         * Count how many entries a certain data has in the database
+         * @param tabela table where the data is located
+         * @param coluna column where the data is located
+         * @param campo data to be counted
+         * @param cn sql connection variable
+         */
         public int countEntries(string tabela, string coluna, string campo, SqlCeConnection cn)
         {
             string check = "SELECT COUNT(*) from " + tabela + " WHERE " + coluna + "='" + campo + "'";
@@ -132,7 +152,9 @@ namespace PI3
             return count;
         }
 
-
+        /*
+         * Button btnRecuperarSenha action
+         */
         private void btnRecuperarSenha_Click(object sender, EventArgs e)
         {
             SqlCeConnection cn = new SqlCeConnection(stringConexao());
@@ -185,7 +207,6 @@ namespace PI3
                 else
                 {
                     string nome = getInfo("Nome", "TabelaLogin", "Login", tbLogin.Text, cn);
-                    //string login = getInfo("Login", "TabelaLogin", "Nome", tbLogin.Text, cn);
                     string RG = getInfo("RG", "TabelaLogin", "Login", tbLogin.Text, cn);
                     string CPF = getInfo("CPF", "TabelaLogin", "Login", tbLogin.Text, cn);
                     string pergunta = getInfo("Pergunta", "TabelaLogin", "Login", tbLogin.Text, cn);
@@ -214,7 +235,6 @@ namespace PI3
                         }
 
                         enviarSenhaEmail(tbEmail.Text, senha);
-                        //MessageBox.Show("A senha para o login " + tbLogin.Text + " é " + senha, "Recuperação de Senha", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -224,6 +244,9 @@ namespace PI3
             }
         }
 
+        /*
+         * Fuction used to move the window by clicking and holding the top dock
+         */
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)

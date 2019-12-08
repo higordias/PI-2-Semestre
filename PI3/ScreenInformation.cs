@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PI3
@@ -17,6 +10,9 @@ namespace PI3
             InitializeComponent();
         }
 
+        /*
+         * Function used to fill the screen with the user informations
+         */
         private void ScreenInformation_Load(object sender, EventArgs e)
         {
             lblComponente1.Text      =   Properties.Settings.Default.componente1;
