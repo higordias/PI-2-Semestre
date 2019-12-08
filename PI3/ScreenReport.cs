@@ -14,9 +14,6 @@ namespace PI3
         string dir_projeto = System.AppContext.BaseDirectory; //variable that holds the database path
         MqttClient client;
         readonly string clientId;
-        DateTime localDate = DateTime.Now;
-        DateTime utcDate = DateTime.UtcNow;
-        string cultureName = "pt-br";
 
         public ScreenReport()
         {
@@ -104,6 +101,9 @@ namespace PI3
             string ReceivedMessage = Encoding.UTF8.GetString(e.Message);
             if (e.Topic == Properties.Settings.Default.codigoCliente + "/Casa/AcessoLiberado")
             {
+                DateTime localDate = DateTime.Now;
+                //DateTime utcDate = DateTime.UtcNow;
+                string cultureName = "pt-br";
                 var culture = new CultureInfo(cultureName);
                 string data = localDate.ToString(culture);
                 if (ReceivedMessage == "1")
