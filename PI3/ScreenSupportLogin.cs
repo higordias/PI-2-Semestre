@@ -19,6 +19,11 @@ namespace PI3
         public ScreenSupportLogin()
         {
             InitializeComponent();
+            tbEmail.Text = "rcbrito@hotmail.com";
+            tbContato.Text = "19 99999-9999";
+            tbCodigoCliente.Text = "11111111";
+            tbAssunto.Text = "Assunto email";
+            tbMensagem.Text = "corpo do email";
         }
 
         /*

@@ -150,11 +150,11 @@ namespace PI3
             {
                 if (ReceivedMessage == "1")
                 {
-                    estadoLampada = true;
+                    estadoLampada = false;
                 }
                 else if (ReceivedMessage == "0")
                 {
-                    estadoLampada = false;
+                    estadoLampada = true;
                 }
                 setButtonLampada();
             }
